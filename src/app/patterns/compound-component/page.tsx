@@ -13,7 +13,7 @@ interface MenuAccordionProps {
 
 const MenuContext = React.createContext<MenuContextType | null>(null);
 
-const MenuAccordion = ({ children }: MenuAccordionProps) => {
+export const MenuAccordion = ({ children }: MenuAccordionProps) => {
   const [activeGroup, setActiveGroup] = useState<string>();
 
   // stable link
@@ -57,11 +57,12 @@ MenuAccordion.Group = function MenuGroup({ children, title }: MenuGroupProps) {
 };
 
 interface MenuItemProps {
-  title: string;
+  children?: React.ReactNode;
+  title?: string;
 }
 
-MenuAccordion.Item = function MenuItem({ title }: MenuItemProps) {
-  return <div>{title}</div>;
+MenuAccordion.Item = function MenuItem({ title, children }: MenuItemProps) {
+  return <div>{!!children ? children : title || "Untitled"}</div>;
 };
 
 export default function CompoundComponent() {
