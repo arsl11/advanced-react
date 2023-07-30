@@ -4,15 +4,21 @@ import SlowComponent from "@/components/SlowComponent";
 import { useState } from "react";
 
 /**
- * TODO:
- * add state location optimization
- */
+  * Problem: If we will use useState inside parent component after set count slow component also will rerender like a child.
+  * Decision: Replace state to new component. After set count only count component will be rerendered.   
+*/
+
+const CountComponent = () => {
+  const [count, setCount] = useState<number>(0);
+
+  return <><button onClick={() => setCount((count) => count + 1)}>{count}</button></>
+}
+
 export default function StateLocation() {
-  const [count, setCount] = useState(0);
 
   return (
     <div>
-      <button onClick={() => setCount((count) => count + 1)}>{count}</button>
+      <CountComponent />
       <SlowComponent />
     </div>
   )
