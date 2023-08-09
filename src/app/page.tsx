@@ -19,6 +19,9 @@ export default function Home() {
         <MenuAccordion.Item>
           <Link href="/optimization/state-location">State location</Link>
         </MenuAccordion.Item>
+        <MenuAccordion.Item>
+          <Link href="/optimization/conditional-rendering">Conditional rendering</Link>
+        </MenuAccordion.Item>
       </MenuAccordion.Group>
     </MenuAccordion>
   );

@@ -1,11 +1,14 @@
 "use client"
 
-import SlowComponent from "@/components/SlowComponent";
+import SlowComponent from "@/components/SlowComponent/SlowComponent";
 import { useState } from "react";
 
 /**
   * Problem: If we will use useState inside parent component after set count slow component also will rerender like a child.
-  * Decision: Replace state to new component. After set count only count component will be rerendered.   
+  * Decision: Replace state to new component. After set count only count component will be rerendered.
+  * Tips: 
+  * Use state as close as possible to the place of use
+  * If a more global state is required, memoization should be used   
 */
 
 const CountComponent = () => {
